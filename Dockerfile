@@ -1,9 +1,13 @@
 FROM haproxy:alpine
 
 EXPOSE 2375
-ENV BIND=":2375" \
+ENV LOG_LEVEL=info \
+    BIND=":2375" \
     SOCKET_PATH=/var/run/docker.sock \
     POST=0 \
+    EVENTS=1 \
+    PING=1 \
+    VERSION=1 \
     ALLOW_RESTARTS=0 \
     ALLOW_STOP=0 \
     ALLOW_START=0 \
@@ -14,15 +18,12 @@ ENV BIND=":2375" \
     CONTAINERS=0 \
     DISABLE_IPV6=0 \
     DISTRIBUTION=0 \
-    EVENTS=1 \
     EXEC=0 \
     GRPC=0 \
     IMAGES=0 \
     INFO=0 \
-    LOG_LEVEL=info \
     NETWORKS=0 \
     NODES=0 \
-    PING=1 \
     PLUGINS=0 \
     SECRETS=0 \
     SERVICES=0 \
@@ -30,7 +31,6 @@ ENV BIND=":2375" \
     SWARM=0 \
     SYSTEM=0 \
     TASKS=0 \
-    VERSION=1 \
     VOLUMES=0
 
 COPY docker-entrypoint.sh /usr/local/bin/
