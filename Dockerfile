@@ -1,7 +1,10 @@
 FROM haproxy:alpine
 
 EXPOSE 2375
-ENV ALLOW_RESTARTS=0 \
+ENV BIND=":2375" \
+    SOCKET_PATH=/var/run/docker.sock \
+    POST=0 \
+    ALLOW_RESTARTS=0 \
     ALLOW_STOP=0 \
     ALLOW_START=0 \
     AUTH=0 \
@@ -21,11 +24,9 @@ ENV ALLOW_RESTARTS=0 \
     NODES=0 \
     PING=1 \
     PLUGINS=0 \
-    POST=0 \
     SECRETS=0 \
     SERVICES=0 \
     SESSION=0 \
-    SOCKET_PATH=/var/run/docker.sock \
     SWARM=0 \
     SYSTEM=0 \
     TASKS=0 \
